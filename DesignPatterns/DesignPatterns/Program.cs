@@ -1,5 +1,6 @@
 ﻿using Strategy;
 using FactoryMethod;
+using AbstractFactory;
 
 namespace DesignPatterns
 {
@@ -8,6 +9,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("**STRATEGY**");
+
             RandomNumberContext context = new RandomNumberContext();
             context.SetStrategy(new RandomIntegerStrategy());
 
@@ -30,6 +32,22 @@ namespace DesignPatterns
             Creator catCreator = new CatCreator();
             IAnimal cat = catCreator.Factory();
             Console.WriteLine(cat.MakeSound());
+
+            Console.WriteLine("**ABSTRACT FACTORY**");
+
+            NissanFactory nissanFactory = new NissanFactory();
+            IVan nissanVan = nissanFactory.CreateVan();
+            ISedan nissanSedan = nissanFactory.CreateSedanCar();
+
+            Console.WriteLine(nissanVan.Expand());
+            Console.WriteLine(nissanSedan.Brake());
+
+            ToyotaFactory toyotaFactory = new ToyotaFactory();
+            IElectric toyotaElectric = toyotaFactory.CreateElectricCar();
+            ISedan toyotaSedan = toyotaFactory.CreateSedanCar();
+
+            Console.WriteLine(toyotaSedan.Brake());
+            Console.WriteLine(toyotaElectric.Recharge());
         }
     }
 }

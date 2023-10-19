@@ -1,6 +1,6 @@
 ﻿namespace FactoryMethod
 {
-    internal class Cat : IAnimal
+    public class Cat : IAnimal
     {
         public string MakeSound()
         {
