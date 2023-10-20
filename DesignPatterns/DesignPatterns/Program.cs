@@ -3,7 +3,7 @@ using AbstractFactory.Factories;
 using AbstractFactory.Interfaces;
 using FactoryMethod.Creators;
 using FactoryMethod.Models;
-
+using Observer;
 
 namespace DesignPatterns
 {
@@ -51,6 +51,18 @@ namespace DesignPatterns
 
             Console.WriteLine(toyotaSedan.Brake());
             Console.WriteLine(toyotaElectric.Recharge());
+
+            Helper.WriteTitle("**OBSERVER**");
+
+            ERBObservable observable = new ERBObservable();
+
+            AlarmClassObserver alarmClassObserver = new AlarmClassObserver();
+            observable.Add(alarmClassObserver);
+
+            AlarmLevelObserver alarmLevelObserver = new AlarmLevelObserver();
+            observable.Add(alarmLevelObserver);
+
+            observable.SimulateAlarmLevelChange();
         }
     }
 }
