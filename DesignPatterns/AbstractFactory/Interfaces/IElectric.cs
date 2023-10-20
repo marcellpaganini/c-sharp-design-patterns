@@ -1,4 +1,4 @@
-﻿namespace AbstractFactory
+﻿namespace AbstractFactory.Interfaces
 {
     public interface IElectric
     {

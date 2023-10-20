@@ -1,6 +1,9 @@
 ﻿using Strategy;
-using FactoryMethod;
-using AbstractFactory;
+using AbstractFactory.Factories;
+using AbstractFactory.Interfaces;
+using FactoryMethod.Creators;
+using FactoryMethod.Models;
+
 
 namespace DesignPatterns
 {
@@ -8,7 +11,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("**STRATEGY**");
+            Helper.WriteTitle("**STRATEGY**");
 
             RandomNumberContext context = new RandomNumberContext();
             context.SetStrategy(new RandomIntegerStrategy());
@@ -21,7 +24,7 @@ namespace DesignPatterns
             Console.WriteLine("--Random float number strategy--");
             context.DisplayRandomNumber();
 
-            Console.WriteLine("**FACTORY METHOD**");
+            Helper.WriteTitle("**FACTORY METHOD**");
 
             Console.WriteLine("--Dog Factory--");
             Creator dogCreator = new DogCreator();
@@ -33,7 +36,7 @@ namespace DesignPatterns
             IAnimal cat = catCreator.Factory();
             Console.WriteLine(cat.MakeSound());
 
-            Console.WriteLine("**ABSTRACT FACTORY**");
+            Helper.WriteTitle("**ABSTRACT FACTORY**");
 
             NissanFactory nissanFactory = new NissanFactory();
             IVan nissanVan = nissanFactory.CreateVan();

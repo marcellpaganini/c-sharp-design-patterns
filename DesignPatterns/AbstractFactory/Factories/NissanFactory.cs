@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AbstractFactory.Interfaces;
+using AbstractFactory.Models;
 
-namespace AbstractFactory
+namespace AbstractFactory.Factories
 {
     public class NissanFactory : ICarFactory
     {

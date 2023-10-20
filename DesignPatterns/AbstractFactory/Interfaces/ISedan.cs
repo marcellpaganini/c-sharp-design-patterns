@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-namespace AbstractFactory
+﻿namespace AbstractFactory.Interfaces
 {
     public interface ISedan
     {

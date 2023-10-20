@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AbstractFactory.Interfaces;
 
-namespace AbstractFactory
+namespace AbstractFactory.Models
 {
     public class ToyotaElectric : IElectric
     {
@@ -20,7 +16,7 @@ namespace AbstractFactory
 
         public string Recharge()
         {
-            return "🔋🔋🔋 => Toyota";
+            return "Recharging... => Toyota";
         }
     }
 }

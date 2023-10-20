@@ -1,4 +1,4 @@
-﻿namespace FactoryMethod
+﻿namespace FactoryMethod.Models
 {
     public class Dog : IAnimal
     {

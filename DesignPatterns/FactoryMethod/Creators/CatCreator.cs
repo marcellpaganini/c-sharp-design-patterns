@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FactoryMethod.Models;
 
-namespace FactoryMethod
+namespace FactoryMethod.Creators
 {
     public class CatCreator : Creator
     {
