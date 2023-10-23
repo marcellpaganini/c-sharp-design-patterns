@@ -4,6 +4,7 @@ using AbstractFactory.Interfaces;
 using FactoryMethod.Creators;
 using FactoryMethod.Models;
 using Observer;
+using Adapter;
 
 namespace DesignPatterns
 {
@@ -51,6 +52,14 @@ namespace DesignPatterns
 
             Console.WriteLine(toyotaSedan.Brake());
             Console.WriteLine(toyotaElectric.Recharge());
+
+            Helper.WriteTitle("**ADAPTER**");
+
+            IJsonBasedLibrary jsonBasedLibrary = new JsonBasedLibrary();
+            jsonBasedLibrary.DisplayData("current_format");
+
+            IJsonBasedLibrary adaptedJsonLibrary = new DataFormatAdapter();
+            adaptedJsonLibrary.DisplayData("new_format");
 
             Helper.WriteTitle("**OBSERVER**");
 

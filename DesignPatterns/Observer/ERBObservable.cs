@@ -47,7 +47,6 @@ namespace Observer
             Thread.Sleep(2000);
             this.Notify();
 
-
             return Alarm; 
         }
     }
