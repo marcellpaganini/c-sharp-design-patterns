@@ -37,14 +37,12 @@ namespace Observer
 
             Alarm = alarms[firstAlarmIndex];
             
-            Thread.Sleep(2000);
             this.Notify();
 
             int secondAlarmIndex = randomAlarm.Next(alarms.Count);
 
             Alarm = alarms[secondAlarmIndex];
 
-            Thread.Sleep(2000);
             this.Notify();
 
             return Alarm; 

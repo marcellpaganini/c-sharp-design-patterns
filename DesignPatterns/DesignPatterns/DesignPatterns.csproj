@@ -12,6 +12,7 @@
     <ProjectReference Include="..\Adapter\Adapter.csproj" />
     <ProjectReference Include="..\FactoryMethod\FactoryMethod.csproj" />
     <ProjectReference Include="..\Observer\Observer.csproj" />
+    <ProjectReference Include="..\Singleton\Singleton.csproj" />
     <ProjectReference Include="..\Strategy\Strategy.csproj" />
   </ItemGroup>
 

@@ -8,8 +8,8 @@
             Console.BackgroundColor = ConsoleColor.Yellow; 
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine(title);
-            Console.WriteLine();
             Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }

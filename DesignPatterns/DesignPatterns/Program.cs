@@ -5,6 +5,7 @@ using FactoryMethod.Creators;
 using FactoryMethod.Models;
 using Observer;
 using Adapter;
+using Singleton;
 
 namespace DesignPatterns
 {
@@ -61,6 +62,23 @@ namespace DesignPatterns
             IJsonBasedLibrary adaptedJsonLibrary = new DataFormatAdapter();
             adaptedJsonLibrary.DisplayData("new_format");
 
+            Helper.WriteTitle("**SINGLETON**");
+            Console.ResetColor();
+
+            SingletonPattern s1 = SingletonPattern.GetInstance();
+            SingletonPattern s2 = SingletonPattern.GetInstance();
+
+            if (s1 == s2)
+            {
+                Console.WriteLine($"{nameof(s1)} and {nameof(s2)} are the same. Singleton works!");
+            }
+            else
+            {
+                {
+                    Console.WriteLine("Different instances");
+                }
+            }
+
             Helper.WriteTitle("**OBSERVER**");
 
             ERBObservable observable = new ERBObservable();
@@ -72,6 +90,9 @@ namespace DesignPatterns
             observable.Add(alarmLevelObserver);
 
             observable.SimulateAlarmLevelChange();
+
+            observable.Remove(alarmClassObserver);
+            observable.Remove(alarmLevelObserver);
         }
     }
 }
