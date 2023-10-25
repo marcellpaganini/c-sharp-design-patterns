@@ -6,6 +6,7 @@ using FactoryMethod.Models;
 using Observer;
 using Adapter;
 using Singleton;
+using Iterator;
 
 namespace DesignPatterns
 {
@@ -13,20 +14,9 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Helper.WriteTitle("**STRATEGY**");
+            Helper.WriteTitle("**CREATIONAL PATTERNS**");
 
-            RandomNumberContext context = new RandomNumberContext();
-            context.SetStrategy(new RandomIntegerStrategy());
-
-            Console.WriteLine("--Random integer number strategy--");
-            context.DisplayRandomNumber();
-
-            context.SetStrategy(new RandomFloatStrategy());
-
-            Console.WriteLine("--Random float number strategy--");
-            context.DisplayRandomNumber();
-
-            Helper.WriteTitle("**FACTORY METHOD**");
+            Helper.WriteSubtitle("**FACTORY METHOD**");
 
             Console.WriteLine("--Dog Factory--");
             Creator dogCreator = new DogCreator();
@@ -38,7 +28,7 @@ namespace DesignPatterns
             IAnimal cat = catCreator.Factory();
             Console.WriteLine(cat.MakeSound());
 
-            Helper.WriteTitle("**ABSTRACT FACTORY**");
+            Helper.WriteSubtitle("**ABSTRACT FACTORY**");
 
             NissanFactory nissanFactory = new NissanFactory();
             IVan nissanVan = nissanFactory.CreateVan();
@@ -54,16 +44,7 @@ namespace DesignPatterns
             Console.WriteLine(toyotaSedan.Brake());
             Console.WriteLine(toyotaElectric.Recharge());
 
-            Helper.WriteTitle("**ADAPTER**");
-
-            IJsonBasedLibrary jsonBasedLibrary = new JsonBasedLibrary();
-            jsonBasedLibrary.DisplayData("current_format");
-
-            IJsonBasedLibrary adaptedJsonLibrary = new DataFormatAdapter();
-            adaptedJsonLibrary.DisplayData("new_format");
-
-            Helper.WriteTitle("**SINGLETON**");
-            Console.ResetColor();
+            Helper.WriteSubtitle("**SINGLETON**");
 
             SingletonPattern s1 = SingletonPattern.GetInstance();
             SingletonPattern s2 = SingletonPattern.GetInstance();
@@ -79,7 +60,32 @@ namespace DesignPatterns
                 }
             }
 
-            Helper.WriteTitle("**OBSERVER**");
+            Helper.WriteTitle("**STRUCTURAL PATTERNS**");
+
+            Helper.WriteSubtitle("**ADAPTER**");
+
+            IJsonBasedLibrary jsonBasedLibrary = new JsonBasedLibrary();
+            jsonBasedLibrary.DisplayData("current_format");
+
+            IJsonBasedLibrary adaptedJsonLibrary = new DataFormatAdapter();
+            adaptedJsonLibrary.DisplayData("new_format");
+
+            Helper.WriteTitle("**BEHAVIORAL PATTERNS**");
+
+            Helper.WriteSubtitle("**STRATEGY**");
+
+            RandomNumberContext context = new RandomNumberContext();
+            context.SetStrategy(new RandomIntegerStrategy());
+
+            Console.WriteLine("--Random integer number strategy--");
+            context.DisplayRandomNumber();
+
+            context.SetStrategy(new RandomFloatStrategy());
+
+            Console.WriteLine("--Random float number strategy--");
+            context.DisplayRandomNumber();
+
+            Helper.WriteSubtitle("**OBSERVER**");
 
             ERBObservable observable = new ERBObservable();
 
@@ -93,6 +99,29 @@ namespace DesignPatterns
 
             observable.Remove(alarmClassObserver);
             observable.Remove(alarmLevelObserver);
+
+            Helper.WriteSubtitle("**ITERATOR**");
+
+            var collection = new WordsCollection();
+            collection.AddItem("First");
+            collection.AddItem("Second");
+            collection.AddItem("Third");
+
+            Console.WriteLine("Straight traversal:");
+
+            foreach (var item in collection)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("Reverse traversal:");
+            
+            collection.ReverseDirection();
+
+            foreach (var item in collection)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
