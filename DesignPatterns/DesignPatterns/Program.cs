@@ -8,7 +8,7 @@ using Adapter;
 using Singleton;
 using Iterator;
 using Decorator;
-
+using ChainOfResponsibility;
 
 namespace DesignPatterns
 {
@@ -147,6 +147,21 @@ namespace DesignPatterns
             {
                 Console.WriteLine(item);
             }
+
+            Helper.WriteSubtitle("**CHAIN OF RESPONSIBILITY**");
+
+            IRequestHandler discountHandler = new DiscountHandler();
+            IRequestHandler retentionHandler = new RetentionHandler(discountHandler);
+            IRequestHandler enrollmentHandler = new EnrollmentHandler(retentionHandler);
+
+            Console.WriteLine("--- First request");
+            retentionHandler.HandleRequest(new Request(RequestType.Enrollment));
+            Console.WriteLine("--- Next request");
+            retentionHandler.HandleRequest(new Request(RequestType.Retention));
+            Console.WriteLine("--- Next request");
+            retentionHandler.HandleRequest(new Request(RequestType.Discount));
+            Console.WriteLine("--- Next request");
+            enrollmentHandler.HandleRequest(new Request(RequestType.Discount));
         }
     }
 }
