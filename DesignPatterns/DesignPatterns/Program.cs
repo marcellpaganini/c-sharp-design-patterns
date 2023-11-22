@@ -7,6 +7,8 @@ using Observer;
 using Adapter;
 using Singleton;
 using Iterator;
+using Decorator;
+
 
 namespace DesignPatterns
 {
@@ -69,6 +71,29 @@ namespace DesignPatterns
 
             IJsonBasedLibrary adaptedJsonLibrary = new DataFormatAdapter();
             adaptedJsonLibrary.DisplayData("new_format");
+
+            Helper.WriteSubtitle("**DECORATOR**");
+
+            Console.WriteLine("Creating Reagular Boba Tea");
+            Thread.Sleep(1000);
+
+            IBobaTea bobaTea = new BobaTea();
+            Console.WriteLine($"Description: {bobaTea.GetDescription()}\n" +
+                              $"Cost: {bobaTea.GetCost()}");
+
+            Console.WriteLine("Adding sugar");
+            Thread.Sleep(1000);
+
+            IBobaTea sugarBobaTea = new SugarDecorator(bobaTea);
+            Console.WriteLine($"Description: {sugarBobaTea.GetDescription()}\n" +
+                              $"Cost: {sugarBobaTea.GetCost()}");
+
+            Console.WriteLine("Adding tapioca pearls");
+            Thread.Sleep(1000);
+
+            IBobaTea tapiocaPearlsSugarBobaTea = new TapiocaPearlsDecorator(new SugarDecorator(bobaTea));
+            Console.WriteLine($"Description: {tapiocaPearlsSugarBobaTea.GetDescription()}\n" +
+                              $"Cost: {tapiocaPearlsSugarBobaTea.GetCost()}");
 
             Helper.WriteTitle("**BEHAVIORAL PATTERNS**");
 
